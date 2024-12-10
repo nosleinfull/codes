@@ -2,7 +2,7 @@
 # https://www.cs.sfu.ca/~ggbaker/zju/math/perm-comb-more.html
 
 def generated_list_of_all_lower_upper_cases(string)
-  ['Hii', 'Hii', 'Hii', 'Hii', 'Hii', 'Hii', 'Hii', 'Hii']
+  ['aaa', 'aaA', 'aAa', 'Aaa', 'AAa', 'AAA', 'AaA', 'aAA']
 end
 
 # The lower case of every string in the list should be equal of the lower case
@@ -11,11 +11,11 @@ def string_elements_matches_lower_cased_value?(array, value)
   !array.any? { |string| string.downcase != value.downcase }
 end
 
-string = 'Hii'
+string = 'aaa'
 list = generated_list_of_all_lower_upper_cases(string)
 puts "The lower case of every string in the list should be equal of the lower case"
 puts "of the original string"
-puts "Result: #{string_elements_matches_lower_cased_value?(list, 'Hii')}"
+puts "Result: #{string_elements_matches_lower_cased_value?(list, 'aaa')}"
 
 
 # The list should contain all permutation possibilities for lower and upper case for string
@@ -24,7 +24,13 @@ def list_has_two_permutation_possibilities_for_size?(array, string_size)
   (possibility ** string_size) == array.length
 end
 
-string = 'Hii'
+string = 'aaa'
 list = generated_list_of_all_lower_upper_cases(string)
 puts "The list should contain all permutation possibilities for lower and upper case for string"
 puts "Result: #{list_has_two_permutation_possibilities_for_size?(list, string.length)}"
+
+
+string = 'aaa'
+list = generated_list_of_all_lower_upper_cases(string)
+puts "The list should not have repeated elements"
+puts "Result: #{(list.uniq.length == list.length)}"
