@@ -29,7 +29,7 @@ list = generated_list_of_all_lower_upper_cases(string)
 puts "The list should contain all permutation possibilities for lower and upper case for string"
 puts "Result: #{list_has_two_permutation_possibilities_for_size?(list, string.length)}"
 
-
+#  The list should not have repeated elements (ensuring that each generated value is a valid permutation)
 string = 'aaa'
 list = generated_list_of_all_lower_upper_cases(string)
 puts "The list should not have repeated elements"
