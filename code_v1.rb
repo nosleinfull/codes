@@ -1,8 +1,22 @@
 # Source that I used to study and remember about permutation and combinations
 # https://www.cs.sfu.ca/~ggbaker/zju/math/perm-comb-more.html
+def generated_list_of_all_lower_upper_cases(string, visitedList = {}, list = [])
+  string = string.downcase if visitedList.empty?
+  list << string
+  array_of_string_chars = string.split("")
+  array_of_string_chars.each_with_index do |char, index|
+    next if char.upcase == char
 
-def generated_list_of_all_lower_upper_cases(string)
-  ['aaa', 'aaA', 'aAa', 'Aaa', 'AAa', 'AAA', 'AaA', 'aAA']
+    newString = string.dup
+    newString[index] = char.upcase
+
+    next if !visitedList[newString].nil?
+
+    visitedList[newString] = newString
+    list = list + generated_list_of_all_lower_upper_cases(newString, visitedList)
+  end
+
+  list
 end
 
 # The lower case of every string in the list should be equal of the lower case
@@ -24,7 +38,7 @@ def list_has_two_permutation_possibilities_for_size?(array, string_size)
   (possibility ** string_size) == array.length
 end
 
-string = 'aaa'
+string = 'aaaaaAa'
 list = generated_list_of_all_lower_upper_cases(string)
 puts "The list should contain all permutation possibilities for lower and upper case for string"
 puts "Result: #{list_has_two_permutation_possibilities_for_size?(list, string.length)}"
